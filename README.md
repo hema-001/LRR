@@ -17,9 +17,61 @@ Our mission is to make the experience of submitting assignments great for tens o
 
 # Installation Instructions
 
-Check file INSTALLATION.md (TBA) for details.
+In order to contribute to LRR you will need to setup a PHP development environment which consist of HTTP Server, and Database Server. There are a lot of HTTP Server variants available, but we recommend using Apache HTTP server. As for the Database Server, Mysql Database Server is used in developing LRR, hence, Mysql is required.
 
+You are free to setup the environment as you like, especially if you already have enough experience with PHP web development, here we demonstrate a simple and fast approach to setup PHP environment in few minutes only using [EasyPHP Devesrver](https://www.easyphp.org/)
 
+**NOTE:** EasyPHP is available for Windows only, other OS users can try alternatives compatible with their systems.
+
+## Download EasyPHP
+Visit [EasyPHP](https://www.easyphp.org/) and download Devserver from the main page.
+
+## Install EasyPHP
+After the download is complete, double click on **EasyPHP-Devserver-xx.x-setup.exe** to start the installer.
+
+Follow the installation wizard by clicking **next** until the installation is complete, and EasyPHP should be installed successfully.
+
+## Start the Servers
+After successfully installing EasyPHP Devserver, run the program from your Desktop or Start Menu.  
+
+You should see small icon of EasyPHP appearing on your hidden icons to the bottom right of the screen next to time and date.  
+
+By clicking on the icon an option menu will popup, choose **Open Dashboard**.  
+
+An EasyPHP Devserver dashboard page should be opened on your browser, under **HTTP SERTVER** click on the green **start** button to start the server, and under **DATABASE SERVER** click on the green **start** button to start the Database Server as well. Both buttons should turn into red with the label **stop** replacing **start**, that way you can confirm whether a server has been started or not.
+
+## Add LRR directory to EasyPHP
+On the dashboard and after both servers have been started successfully, click on **+ add directory** button under **WORKING DIRECTORIES** section.  
+
+Enter a name for your directory (e.g., lrr).  
+Copy and paste LRR directory path on your machine into the second field.  
+Click save.  
+
+## Import LRR database
+EasyPHP provides phpMyAdmin tool to handle administration of MySQL over php.  
+
+Under **MODULES** section you should be able to find **MySQL Administration : PhpMyAdmin x.x.x** module, clicking on **open** will open new tab with phpMyAdmin dashboard.  
+
+On the left vertical menu of phpMyAdmin dashboard, click on **New**.  
+Enter **lrr** into **database name** field.  
+Click create.  
+
+A database named *lrr* should be created successfully.  
+
+Choose **import** from the tab menu.  
+Under **File to import** section, click on **choose file** and locate the lrr database import file that contains the database structure.  
+Scroll down and click on **go**.  
+
+## Running and connecting LRR
+LRR uses a design that retrieves the database credentials from a file stored safely two levels above LRR's directory. So, in order to connect to the database, you should create a folder named **lrr_submission** two levels above LRR's directory on your machine, for example:
+
+LRR directory on your machine is `D:\folder1\folder2\lrr`  
+Then, **lrr_submission** should be created in `D:\lrr_submission`  
+
+Create a text file named **KeepItSafe.txt** under **lrr_submission** that contains the credentials to access the root user (or a user with enough privileges to manipulate data on lrr) on your database server separated by comma, for example:  
+`username,password`
+
+To run/open LRR, click on the directory name under **WORKING DIRECTORIES** on EasyPHP dashboard, a new tab should be opened with a local connected and running instance of LRR.
 
 
 # Current Status
@@ -52,7 +104,7 @@ http://118.25.96.118/bugzilla/describecomponents.cgi?product=Lab%20Report%20Repo
 
 
 # TODO
-
+-  *Add Installation Instructions for MAC*. To cover installation on more operating systems.
 -  *Receiving email for password resetting*. Password resetting link is not always sent successfully.
 
 -  *How assignements should be stored?*  Creating sub-directories on all student submissions course-code/semester/section-number.  (/student-number/course-code/semester/section-number/assignement-title/submission.txt)
