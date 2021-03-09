@@ -205,7 +205,7 @@ New Date/Time <br><input type="date" name="date" required=""> <input type="time"
         
                     <h3> Post new Lab Assignment </a></h3>
                 
-                    <form method='post'   enctype='multipart/form-data' action='Script.php'>
+                    <form method='post'   enctype='multipart/form-data' action='Script.php' id="nlaf">
 <?php
                     $_SESSION['url']=$url;
                     ?>
@@ -220,11 +220,11 @@ New Date/Time <br><input type="date" name="date" required=""> <input type="time"
                     </div>
 
                     Title
-                        <input type='text'  name='title' placeholder='Ttle' class='form-control' required='' value="">
+                        <input type='text'  name='title' placeholder='Ttle' class='form-control' required='' value="" id="ltitle">
                     Instructions
-                        <textarea  name='instructions' placeholder='Assignment Instructions' class='form-control' required='' value=""></textarea>
+                        <textarea  name='instructions' placeholder='Assignment Instructions' class='form-control' required='' value="" id="linstruct"></textarea>
                     Marks
-                        <input type='text'  name='marks' placeholder='Marks' class='form-control' required='' value="">
+                        <input type='text'  name='marks' placeholder='Marks' class='form-control' required='' value="" id="lmark">
                     Attachment 1
                         <input type='file'  name='attachment1' placeholder='Attachment 1' class='form-control'>
 
@@ -238,11 +238,11 @@ New Date/Time <br><input type="date" name="date" required=""> <input type="time"
                     Attachment 4
                         <input type='file'  name='attachment4' placeholder='Attachment 4' class='form-control' >
                     <br>
-                    Submission Type  <input type='radio' name='type' value='Individual' required=''> Invidual
+                    Submission Type  <input type='radio' name='type' value='Individual' required='' id="lindi"> Invidual
 
-                                                <input type='radio' name='type' value='Group' required=''> Group
+                                                <input type='radio' name='type' value='Group' required='' id="lgrp"> Group
                     <hr>
-                    <input type='submit' class='btn btn-primary' value='Post Lab Assignment'><br>
+                    <input type='submit' class='btn btn-primary' value='Post Lab Assignment' id="lbtn"><br>
                     </form><br><br><br><br>
 <?php
                 }            
@@ -326,7 +326,7 @@ New Date/Time <br><input type="date" name="date" required=""> <input type="time"
    <br> <span style='font-size:8pt'>Posted : $posted  Deadline :  <b> $deadline </b> &nbsp; ($marks Marks)      &nbsp;    &nbsp; &nbsp; &nbsp; &nbsp;   "
                 . "<br>"
 
-                      . "<span class='btn-default'> &nbsp;&nbsp; $count_subs Submissions ( $count_marked Marked ) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='Courses.php?course=".$url."&act=edit&cid=".$id."'>Edit</a>&nbsp;&nbsp; |&nbsp;&nbsp;<a href='~\..\Submissions.php?id=$id&header=$header&total=$marks' onclick=''> View </a>     &nbsp;&nbsp; |&nbsp;&nbsp;         <a href='#'  onclick='extend_deadline($id)'> Extend Deadline </a>  </span>         <hr> Attachments : $full_link </span>"
+                      . "<span class='btn-default'> &nbsp;&nbsp; $count_subs Submissions ( $count_marked Marked ) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='Courses.php?course=".$url."&act=edit&cid=".$id."'>Edit</a>&nbsp;&nbsp; |&nbsp;&nbsp;<a href='~\..\Submissions.php?id=$id&header=$header&total=$marks' onclick='' id='view_btn'> View </a>     &nbsp;&nbsp; |&nbsp;&nbsp;         <a href='#'  onclick='extend_deadline($id)' id='ext_btn'> Extend Deadline </a>  </span>         <hr> Attachments : $full_link </span>"
                       . "&nbsp;&nbsp;</div>
                         ";
                 
@@ -480,30 +480,30 @@ WHERE  Lecturer_User_ID=$lecturer_id and course_students_table.Status='Pending'"
         <input type="hidden" name="frm_createCourse" value="true" required=""/>
         <input type="hidden" name="l" value="l" required=""/>
         Course Name
-            <input type="text" name="name" placeholder="Course Name" class="form-control" required="">
+            <input type="text" name="name" placeholder="Course Name" class="form-control" required="" id="cname">
 
         Course Code
-            <input type="text" name="code" placeholder="Course Code" class="form-control" required="">
+            <input type="text" name="code" placeholder="Course Code" class="form-control" required="" id="ccode">
 
         URL (Leave blank to use Course Code & Year)
             <input type="text" name="url" placeholder="Choose Custom URL " class="form-control">
 
         Academic Year
-            <input type="text" name="academic" placeholder="Academic Year" class="form-control" required="">
+            <input type="text" name="academic" placeholder="Academic Year" class="form-control" required="" id="ayear">
 
         Faculty <br>
-        <input type="text" name="faculty" placeholder="Faculty" class="form-control" required="">
+        <input type="text" name="faculty" placeholder="Faculty" class="form-control" required="" id="fac">
 
 
         <input type="hidden" name="lecturer" value="<?php echo $_SESSION['user_id'];  ?>">
 
 
         Verify Joining Students
-            <input type="radio" name="verify" value="1"> Yes
-        <input type="radio" name="verify" value="0" checked=""> No
+            <input type="radio" name="verify" value="1" id="jyes"> Yes
+        <input type="radio" name="verify" value="0" checked="" id="jno"> No
 
         <br>
-        <input type="submit" class="btn btn-primary" value="Create Portal"><br>
+        <input type="submit" class="btn btn-primary" value="Create Portal" id="portal_btn"><br>
   
         </form>
       
@@ -560,7 +560,7 @@ if( $_SESSION['user_type']=="Student")
        
         if($faculty=="")
         {
-            echo "<h4> Search Results for  Code : $search</h4><hr>";
+            echo "<h4> Search Results for Course Code $search</h4><hr>";
             $result = mysqli_query($con,"SELECT `Course_ID`, `Course_Name`, `Academic_Year`, `Faculty`,"
                                    . " `Lecturer_User_ID`, `TA_User_ID`, `Course_Code`, `URL`, `Verify_New_Members`  "
                                    . " , users_table.Full_Name  FROM `courses_table` INNER JOIN users_table"
@@ -678,7 +678,7 @@ INNER JOIN course_students_table on course_students_table.Course_ID=courses_tabl
             <div class='row'> 
             <div class='col-md-10'> 
             <div class='row'><div class='col-md-6'> Find course by Code
-            <input  type='text' class='form-control' name='search' placeholder='Enter Course Code'>
+            <input  type='text' class='form-control' name='search' placeholder='Enter Course Code' id='search_field'>
             </div><div class='col-md-6'>
 List courses by faculty
 
@@ -695,7 +695,7 @@ List courses by faculty
 
 </div>
                  <div class='col-md-1'> <br>
-            <input type='submit' class='btn btn-primary' value='Find'>
+            <input type='submit' class='btn btn-primary' value='Find' id='find_btn'>
             </div>
        
         </div>

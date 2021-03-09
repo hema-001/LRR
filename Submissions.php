@@ -194,7 +194,7 @@ where Lab_Report_ID=$id and lab_report_submissions.Status='Pending' order by Sub
                                        
                 echo "   <k href='#'>   <div class='btn btn-default break-word' style='dislay:block; word-wrap: break-word; border: 1px solid #F0F0F0;border-left: 4px solid #03407B;'>
   $title  <br> by: <b> $submitted_by </b>
-   <br> <span style='font-size:8pt'>Submitted at $posted   <button class='btn-sm btn-info' style='margin-left:50px;' onclick='mark($Submission_ID,\"$title\",$total)'>  Mark Submission</button><br> Attachments : $full_link </span>  
+   <br> <span style='font-size:8pt'>Submitted at $posted   <button class='btn-sm btn-info' style='margin-left:50px;' onclick='mark($Submission_ID,\"$title\",$total)' id='mark_btn'>  Mark Submission</button><br> Attachments : $full_link </span>  
 </div></k>";
                 
             }
@@ -486,15 +486,15 @@ include 'Footer.php';
         {
        
 
-            $('<form id="frm" method="get" action="Script.php">'+title+'('+marks+' marks) <input type="hidden" name="savemarks" value="true">\n\
- <input type="hidden" name="total" value="'+marks+'" > <input type="hidden" name="id" value="'+id+'" ><br> Marks <input type="text" name="marks">\n\
- Comments <textarea name="feedback"></textarea>  \n\
+            $('<form id="submit-form" method="get" action="Script.php">'+title+'('+marks+' marks) <input type="hidden" name="savemarks" value="true">\n\
+ <input type="hidden" name="total" value="'+marks+'" > <input type="hidden" name="id" value="'+id+'" ><br> Marks <input type="text" name="marks" id="marks">\n\
+ Comments <textarea name="feedback" id="feedback"></textarea>  \n\
 <input type="hidden" name="labid" value="<?php echo $course_id; ?>"> <input type="hidden" name="header" value="<?php echo $header; ?>">  </form>').dialog({
         modal: true,
                                                                                                                                                   title:'Mark Submission',
                                                                                                                                                   buttons: {
             'Submit Marking': function () {
-                $('#frm').submit();
+                $('#submit-form').submit();
      
                 $(this).dialog('close');
             },
@@ -520,7 +520,7 @@ function updatev(id)
     {
         
 
-        $('<form id="frm" method="get" action="Script.php"> <input type="hidden" name="updatevisibility" value="true">\n\
+        $('<form id="submit-form" method="get" action="Script.php"> <input type="hidden" name="updatevisibility" value="true">\n\
  <input type="hidden" name="id" value="'+id+'" > <br>\n\
 Update Visibility<br><select name="status"> <option> Public </option><option>Private</option> </select>  \n\
 <input type="hidden" name="labid" value="<?php echo $id; ?>"> <input type="hidden" name="total" value="<?php echo $total; ?>" > <input type="hidden" name="header" value="<?php echo $header; ?>">  </form>').dialog({
@@ -528,7 +528,7 @@ Update Visibility<br><select name="status"> <option> Public </option><option>Pri
                                                                                                                                                                                                              title:'Update Report Visibility',
                                                                                                                                                                                                              buttons: {
             'Update': function () {
-                $('#frm').submit();
+                $('#submit-form').submit();
      
                 $(this).dialog('close');
             },

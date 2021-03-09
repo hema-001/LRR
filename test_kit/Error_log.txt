@@ -1,0 +1,49 @@
+ 
+
+
+[ERROR]10/03/2021-00:56:44>Traceback (most recent call last):
+  File "D:\Graduation Thesis\LRR workstation\LRR\test_kit\student.py", line 50, in join_course
+    course_code_field = wait.until(EC.presence_of_element_located((By.ID, "search_field")))
+  File "c:\users\ibrahim\appdata\local\programs\python\python39\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+[ERROR]10/03/2021-00:57:08>Traceback (most recent call last):
+  File "D:\Graduation Thesis\LRR workstation\LRR\test_kit\student.py", line 83, in submit_assignment
+    self.utility.open_course_page(driver)
+  File "D:\Graduation Thesis\LRR workstation\LRR\test_kit\utility.py", line 251, in open_course_page
+    course_card = wait.until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT,str(course_code))))
+  File "c:\users\ibrahim\appdata\local\programs\python\python39\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+[ERROR]10/03/2021-00:57:39>Traceback (most recent call last):
+  File "D:\Graduation Thesis\LRR workstation\LRR\test_kit\instructor.py", line 161, in mark_submission
+    mark_submission = wait3.until(EC.presence_of_element_located((By.ID, "mark_btn")))
+  File "c:\users\ibrahim\appdata\local\programs\python\python39\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+[ERROR]10/03/2021-00:58:02>Traceback (most recent call last):
+  File "D:\Graduation Thesis\LRR workstation\LRR\test_kit\student.py", line 120, in request_remarking
+    self.utility.open_course_page(driver)
+  File "D:\Graduation Thesis\LRR workstation\LRR\test_kit\utility.py", line 251, in open_course_page
+    course_card = wait.until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT,str(course_code))))
+  File "c:\users\ibrahim\appdata\local\programs\python\python39\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+[ERROR]10/03/2021-00:59:55>Traceback (most recent call last):
+  File "D:\Graduation Thesis\LRR workstation\LRR\test_kit\student.py", line 152, in create_course_group
+    self.utility.open_course_page(driver)
+  File "D:\Graduation Thesis\LRR workstation\LRR\test_kit\utility.py", line 251, in open_course_page
+    course_card = wait.until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT,str(course_code))))
+  File "c:\users\ibrahim\appdata\local\programs\python\python39\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+

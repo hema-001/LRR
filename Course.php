@@ -97,7 +97,7 @@ if( $_SESSION['user_type'] == "Student")
     <a class="nav-link" data-toggle="tab" href="#menu3">Submitted</a>
     </li>
     <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#menu4">Marked</a>
+    <a class="nav-link" data-toggle="tab" href="#menu4" id="marked_tab">Marked</a>
     </li>
     </ul>
     
@@ -426,7 +426,7 @@ where Lab_Report_ID=$lab_repo_id and (lab_report_submissions.Student_id='$studen
             if($status=='Marked')
             {
                 $rm_data="\Script.php?remarking=yes&id=$Submission_ID&url=$url&status=Remarking";
-                $remarking="<button  onclick='remarking(\"$rm_data\")' class='btn-sm btn-success'>  Request Remarking </button>";
+                $remarking="<button  onclick='remarking(\"$rm_data\")' class='btn-sm btn-success' id='req_remark'>  Request Remarking </button>";
             }
             if($status=='Remarking')
             {
@@ -502,7 +502,7 @@ where Lab_Report_ID=$lab_repo_id and (lab_report_submissions.Student_id='$studen
     while($row = mysqli_fetch_assoc($resultx1)) {$count_groups=$row['Course_Group_id'];} 
 
      
-    echo " <button onclick='CreateGroup()' class='btn btn-primary'> Create Group</button>";
+    echo " <button onclick='CreateGroup()' class='btn btn-primary' id='g_create_btn'> Create Group</button>";
     
     ?>
     
@@ -592,7 +592,7 @@ function CreateGroup() {
         
 
         $('<form id="frm" method="get" action="Script.php"><input type="hidden" name="creategroup" value="true">\n\
- <input type="hidden" name="student_id" value="<?php echo $student_id; ?>" > Group Name  <input type="text" name="name">\n\
+ <input type="hidden" name="student_id" value="<?php echo $student_id; ?>" > Group Name  <input type="text" name="name" id="g_name">\n\
 <input type="hidden" name="url" value="<?php echo $url; ?>">  <input type="hidden" name="id" value="<?php echo $course_id; ?>">    </form>').dialog({
     modal: true,
     title:'Create Group',

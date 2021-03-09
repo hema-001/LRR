@@ -19,7 +19,7 @@ include 'Header.php';
     <div class="panel-body">
 
 
-    <form method="post" action="Script.php" >
+    <form method="post" action="Script.php" id="frm">
     <input type="hidden" name="frm_signup_2" value="true"/>
     Full Name
     <input type="text" name="fullname" placeholder="Your Full Name" class="form-control" value="<?php echo $_SESSION['user_fullname']; ?>"  required="required"/>
