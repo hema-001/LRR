@@ -45,4 +45,31 @@ Simply, on a command prompt issue the following command:
 
 For more details about pytest-selenium visit [this page](https://pytest-selenium.readthedocs.io/en/latest/installing.html).
 
-# 
+# Text files descriptions
+
+As you have noticed already, there are several `.txt` files in the test kit folder, namely:  
+* course_code.txt  
+* DUMMY_SUBMISSION.txt
+* Error_log.txt
+* student_ids.txt
+* Test_Users.txt  
+
+Each file is essential to the automation operation in some sense, for example `course_code.txt` works as a short-term memory to store course codes created by the automation
+scripts in some test cases that needed to be used later in a subsequent test cases that requires the same course code to successfully run the test case. And `DUMMY_SUBMISSION.txt` that is used as a dummy file to be submitted during execution of lab report submission test case.  
+`Error_log.txt` is used for debugging and keeping track of problems encountered during test execution.  
+`student_ids.txt` is a static memory to store several student IDs pre-inserted into `student_data` table of `lrr` database and used by signup test case automation.  
+`Test_Users.txt` not used by the scripts, but contains two main system actors, namely, instructor and student accounts credentials that is provided manually inside the test scripts to carry out different operations for different system users.  
+
+# Running the test suite
+
+> **_NOTE:_** Before running the test suite make sure that you have followed [these instructions](https://github.com/hema-001/LRR#installation-instructions) on how to install and run LRR on your machine.  
+
+On the same local directory of your branch of LRR, and after you have done your contribution to the source code whether it is a bug fix or a feature integration and before committing your changes, you should run this regression test suite to prevent the addition of new bugs to the source code, and to ensure master repo consistency.  
+
+Open a command prompt and issue the following command:  
+>`C:\ pytest --html test_report_xxxx_yyyy.html`  
+
+The option `--html` tells pytest to generate an HTML test report with test execution results, which is useful and later must be provided before merging new pull requests to master repo.  
+`test_report_xxxx_yyyy.html` is the name of the HTML file to be generated after the completion of test execution. Where `xxxx` stands for the date string, for example `10032021` translates to March 3rd 2021, and `yyyy` stands for now time of test execution, for example `1955` translates to 19:55.  
+After running the command and if everything is setup correctly, you should see series of web automations for different main functions of LRR.  
+Finally, an HTML test report file will be generated just like the example test report in the test kit folder `example_test_report_09032021_1927.html'.
