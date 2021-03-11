@@ -22,5 +22,6 @@ Writing history:
 3- Feb 08, 2021: implemented post_lab_report(), manage_deadline() functions. Ibrahim M.I. Ismail
 4- Mar 10, 2021: reduced the amount of web element locators that uses xpath by replacing finding elements
 		 by xpath with IDs, as well introduced id attributes for some web elements on LRR's php files.
+5- Mar 11, 2021: final fixes and enhancments.
 """
 

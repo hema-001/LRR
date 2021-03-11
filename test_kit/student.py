@@ -60,7 +60,8 @@ class Student(Actor):
 
 			#If the joined course successfully, proceed.
 			wait3 = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[1]/span")))
-			
+			return 1
+
 		#Else, if exception happened, abort.
 		except:
 			print("There was a problem executing this test case")
@@ -69,7 +70,7 @@ class Student(Actor):
 			self.utility.log_error(err_msg)
 			print("Treminating session")
 			self.utility.killSession(driver)
-
+			return 0
 	def submit_assignment(self):
 
 		""" This method automates student assignment submission process.
@@ -98,6 +99,8 @@ class Student(Actor):
 			attachment.send_keys(os.getcwd()+"/DUMMY_SUBMISSION.txt")
 			submit = driver.find_element(By.ID, "submit_btn")
 			submit.click()
+			return 1
+
 		except:
 			print("There was a problem executing this test case")
 			print("Error in \"submit_assignment()\" method, see error_log.txt for more details")
@@ -105,6 +108,7 @@ class Student(Actor):
 			self.utility.log_error(err_msg)
 			print("Treminating session")
 			self.utility.killSession(driver)
+			return 0
 
 	def request_remarking(self):
 
@@ -131,6 +135,8 @@ class Student(Actor):
 			alert = wait3.until(EC.alert_is_present())
 			alert.send_keys("TESTREASON")
 			alert.accept()
+			return 1
+
 		except:
 			print("There was a problem executing this test case")
 			print("Error in \"request_remarking()\" method, see error_log.txt for more details")
@@ -138,6 +144,7 @@ class Student(Actor):
 			self.utility.log_error(err_msg)
 			print("Treminating session")
 			self.utility.killSession(driver)
+			return 0
 
 	def create_course_group(self):
 		
@@ -165,6 +172,8 @@ class Student(Actor):
 			group_name.send_keys("TESTGROUP"+str(dateStr)+str(timeStr))
 			create = group_form.find_element(By.XPATH, "//div[2]/div/button[1]")
 			create.click()
+			return 1
+
 		except:
 			print("There was a problem executing this test case")
 			print("Error in \"create_course_group()\" method, see error_log.txt for more details")
@@ -172,6 +181,7 @@ class Student(Actor):
 			self.utility.log_error(err_msg)
 			print("Treminating session")
 			self.utility.killSession(driver)
+			return 0
 
 	def join_course_group(self):
 		pass

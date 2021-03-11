@@ -48,9 +48,10 @@ class MyUtility:
 			print("There was initiating a new session")
 			print("Error in \"getSession()\" method, see error_log.txt for more details")
 			err_msg = traceback.format_exc()
-			self.utility.log_error(err_msg)
+			self.log_error(err_msg)
 			print("Treminating session")
-			self.utility.killSession(driver)
+			self.killSession(driver)
+			return 0
 
 
 	def login(self, obj):
@@ -76,9 +77,10 @@ class MyUtility:
 			print("There was a problem executing this test case")
 			print("Error in \"login()\" method, see error_log.txt for more details")
 			err_msg = traceback.format_exc()
-			self.utility.log_error(err_msg)
+			self.log_error(err_msg)
 			print("Treminating session")
-			self.utility.killSession(driver)
+			self.killSession(driver)
+			return 0
 
 	def signup(self, name, email, password):
 
@@ -111,13 +113,16 @@ class MyUtility:
 			re_password_field.send_keys(password)
 			submit = reg_form.find_element(By.XPATH, "//form/input[6]")
 			submit.click()
+			return 1
+
 		except:
 			print("There was a problem executing this test case")
 			print("Error in \"signup()\" method, see error_log.txt for more details")
 			err_msg = traceback.format_exc()
-			self.utility.log_error(err_msg)
+			self.log_error(err_msg)
 			print("Treminating session")
-			self.utility.killSession(driver)			
+			self.killSession(driver)
+			return 0			
 
 	def killSession(self, driver):
 		
@@ -246,10 +251,19 @@ class MyUtility:
 		"""This method redirects the webdriver to a course page identified by its course code
 		fetched from 'course_code.txt' file.
 		"""
-		wait = WebDriverWait(driver, 10)
-		course_code = self.getCourseCode()
-		course_card = wait.until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT,str(course_code))))
-		course_card.click()
+		try:
+			wait = WebDriverWait(driver, 10)
+			course_code = self.getCourseCode()
+			course_card = wait.until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT,str(course_code))))
+			course_card.click()
+		except:
+			print("There was a problem executing this test case")
+			print("Error in \"open_course_page()\" method, see error_log.txt for more details")
+			err_msg = traceback.format_exc()
+			self.log_error(err_msg)
+			print("Treminating session")
+			self.killSession(driver)
+			return 0			
 
 	def log_error(self, error_msg):
 		"""This method formats and writes various error messages retrieved from
@@ -259,3 +273,12 @@ class MyUtility:
 		time = datetime.datetime.today().strftime("%H:%M:%S")
 		date = datetime.datetime.today().strftime ('%d/%m/%Y')
 		file.write("[ERROR]"+date+"-"+time+">"+error_msg+"\n")
+
+	def random_string(self, ch):
+		"""Creates a random literal string of length ch.
+		"""
+		ls = []
+		for i in range(ch):
+			ls.append(chr(random.randint(97,122)))
+
+		return ''.join(ls)

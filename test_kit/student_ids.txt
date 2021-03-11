@@ -6,5 +6,8 @@
 #into the database by you. Suppose we have inserted 202032020727, 202032020728, 202032020729 into
 #the 'student_data' table of LRR database, then we would post them here as well (DO NOT START LINES WITH '#'
 # OTHERWISE IT WILL BE IGNORED).
+202032020725
+202032020726
+202032020727
 202032020728
 202032020729
