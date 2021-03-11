@@ -2,7 +2,7 @@
 Before executing this test suite, there are several things need to be setup and taken into considaration.  
 
 # Setup test environment
-These test scripts are written using Python, uses selenium webdriver for automation, and pytest for test execution and reporting. Thus, you have to install  
+These test scripts are written using Python, uses selenium webdriver for automation, and pytest for test execution and reporting. Thus, you have to install
 Python on your machine, then pip install selenium webdriver and pytest-selenium libraries.  
 
 Here we guide you through the installation of selenium and pytest-selenium only assuming that you already have Python environment on your machine. If not, visit 
