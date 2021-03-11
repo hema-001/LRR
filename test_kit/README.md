@@ -72,4 +72,4 @@ Open a command prompt and issue the following command:
 The option `--html` tells pytest to generate an HTML test report with test execution results, which is useful and later must be provided before merging new pull requests to master repo.  
 `test_report_xxxx_yyyy.html` is the name of the HTML file to be generated after the completion of test execution. Where `xxxx` stands for the date string, for example `10032021` translates to March 3rd 2021, and `yyyy` stands for now time of test execution, for example `1955` translates to 19:55.  
 After running the command and if everything is setup correctly, you should see series of web automations for different main functions of LRR.  
-Finally, an HTML test report file will be generated just like the example test report in the test kit folder `example_test_report_09032021_1927.html'.
+Finally, an HTML test report file will be generated just like the example test report in the test kit folder `example_test_report_09032021_1927.html`.
