@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2021 at 05:38 PM
+-- Generation Time: Mar 11, 2021 at 10:24 AM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lrr_new`
+-- Database: `lrr`
 --
 
 -- --------------------------------------------------------
@@ -178,6 +178,19 @@ CREATE TABLE `students_data` (
   `Passport_Number` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
+--
+-- Dumping data for table `students_data`
+--
+
+INSERT INTO `students_data` (`ID`, `Student_ID`, `Passport_Number`) VALUES
+(473, '202032070221', NULL),
+(474, '202032070222', NULL),
+(475, '202032020725', NULL),
+(476, '202032020726', NULL),
+(477, '202032020727', NULL),
+(478, '202032020728', NULL),
+(479, '202032020729', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -195,6 +208,14 @@ CREATE TABLE `users_table` (
   `Status` varchar(30) COLLATE utf8mb4_bin NOT NULL DEFAULT 'Active',
   `HashPassword` varchar(500) COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Dumping data for table `users_table`
+--
+
+INSERT INTO `users_table` (`User_ID`, `Email`, `Password`, `Full_Name`, `UserType`, `Student_ID`, `Passport_Number`, `Status`, `HashPassword`) VALUES
+(537, 'test.instructor@testing.com', '$2y$10$FeQRYJ.SDLjDH27j2tawOeGPwqNFsiyAa4CRc60W8OVHnzW.uavOa', 'Test Instructor', 'Lecturer', '202032070221', '', 'Active', NULL),
+(538, 'test.student@testing.com', '$2y$10$QD2rlMQNiZnyUjkF9dsqKO42REgwNZ/JggaVXQgVJEoPEqA5dgEhS', 'Test student', 'Student', '202032070222', '', 'Active', NULL);
 
 --
 -- Indexes for dumped tables
@@ -310,12 +331,12 @@ ALTER TABLE `lab_report_submissions`
 -- AUTO_INCREMENT for table `students_data`
 --
 ALTER TABLE `students_data`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=473;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=480;
 --
 -- AUTO_INCREMENT for table `users_table`
 --
 ALTER TABLE `users_table`
-  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=537;COMMIT;
+  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=539;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
