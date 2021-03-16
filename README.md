@@ -172,7 +172,17 @@ To submit bug reports or improvement ideas, please ask Hui [lanhui at zjnu.edu.c
 
 ## Frequently Asked Questions
 
-Check FAQ.md (TBA) for details.
+**Do I have to setup EasyPHP especially ?**  
+*You are free to setup the environment as you like, especially if you already have enough experience with PHP web development, here we demonstrate a simple and fast approach to setup PHP environment in few minutes only using [EasyPHP Devesrver](https://www.easyphp.org/)*  
+However, you should pay attention to some of the details on the **Installation instructions** namely, last two sections (i.e., Import LRR database, and Running and connecting to LRR) and adjust to them accordingly.  
+
+**Why using Google Chrome webdriver only in the test automation scripts?**  
+You are not limited to use Google Chrome webriver only, you can use any available webdriver but you'll need to adjust some lines in the test scripts.  
+For example, assume you are using Edge webdriver, then you'll need to change the following line in `utility.py` file, inside `getSession()` method:  
+>`driver = webdriver.Chrome()`  
+
+To whatever applies for the invokation of Edge webdriver object.  
+We used Google Chrome in the guidelines since it is the webdriver used in the implementation of the scripts.
 
 
 
