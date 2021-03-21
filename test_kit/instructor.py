@@ -79,7 +79,7 @@ class Instructor(Actor):
 			submission_type.click()
 			submit = new_lab_assignment_form.find_element(By.XPATH, "//form[@id='nlaf']/input[@id='lbtn']")
 			submit.click()
-			return 1
+			return 0
 		except:
 			print("There was a problem executing this test case")
 			print("Error in \"post_lab_report()\" method, see error_log.txt for more details")
@@ -87,7 +87,7 @@ class Instructor(Actor):
 			self.utility.log_error(err_msg)
 			print("Treminating session")
 			self.utility.killSession(driver)
-			return 0
+			return 1
 
 	def create_course_portal(self, joining = 0):
 		
@@ -133,7 +133,7 @@ class Instructor(Actor):
 			joining_students.click()
 			submit = driver.find_element(By.ID, "portal_btn")
 			submit.click()
-			return 1
+			return 0
 
 		except:
 			print("There was a problem executing this test case")
@@ -142,7 +142,7 @@ class Instructor(Actor):
 			self.utility.log_error(err_msg)
 			print("Treminating session...")
 			self.utility.killSession(driver)
-			return 0
+			return 1
 
 	def mark_submission(self):
 		
@@ -174,7 +174,7 @@ class Instructor(Actor):
 			comment.send_keys("TESTCOMMENT")
 			submit = pop_up.find_element(By.XPATH, "/html/body/div[4]/div[2]/div/button[1]")
 			submit.click()
-			return 1
+			return 0
 
 		except:
 			print("There was a problem executing this test case")
@@ -183,7 +183,7 @@ class Instructor(Actor):
 			self.utility.log_error(err_msg)
 			print("Treminating session...")
 			self.utility.killSession(driver)
-			return 0
+			return 1
 
 	def manage_deadline(self):
 
@@ -214,7 +214,7 @@ class Instructor(Actor):
 			target.click()
 			submit = extend_deadline_form.find_element(By.XPATH, "/html/body/div[3]/div[2]/div/button[1]")
 			submit.click()
-			return 1
+			return 0
 
 		except:
 			print("There was a problem executing this test case")
@@ -223,4 +223,4 @@ class Instructor(Actor):
 			self.utility.log_error(err_msg)
 			print("Treminating session...")
 			self.utility.killSession(driver)
-			return 0
+			return 1

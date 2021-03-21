@@ -51,7 +51,7 @@ class MyUtility:
 			self.log_error(err_msg)
 			print("Treminating session")
 			self.killSession(driver)
-			return 0
+			return 1
 
 
 	def login(self, obj):
@@ -80,7 +80,7 @@ class MyUtility:
 			self.log_error(err_msg)
 			print("Treminating session")
 			self.killSession(driver)
-			return 0
+			return 1
 
 	def signup(self, name, email, password):
 
@@ -113,7 +113,7 @@ class MyUtility:
 			re_password_field.send_keys(password)
 			submit = reg_form.find_element(By.XPATH, "//form/input[6]")
 			submit.click()
-			return 1
+			return 0
 
 		except:
 			print("There was a problem executing this test case")
@@ -122,7 +122,7 @@ class MyUtility:
 			self.log_error(err_msg)
 			print("Treminating session")
 			self.killSession(driver)
-			return 0			
+			return 1			
 
 	def killSession(self, driver):
 		
@@ -263,7 +263,7 @@ class MyUtility:
 			self.log_error(err_msg)
 			print("Treminating session")
 			self.killSession(driver)
-			return 0			
+			return 1			
 
 	def log_error(self, error_msg):
 		"""This method formats and writes various error messages retrieved from

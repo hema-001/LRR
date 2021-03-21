@@ -38,7 +38,7 @@ utility = MyUtility("http://127.0.0.1/edsa-LRR3/")
 instructor = Instructor("aA124536!","202032070221", utility)
 student = Student("aA124536!", "202032070222", utility)
 
-cond = 1
+cond = 0
 f_name = utility.random_string(4)
 l_name = utility.random_string(5)
 
