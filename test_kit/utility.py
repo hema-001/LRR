@@ -39,6 +39,8 @@ class MyUtility:
 
 		Returns:
 		- driver: selenium.webdriver object.
+		1 on failure to complete case execution.
+
 		"""
 		try:
 			driver = webdriver.Chrome()
@@ -60,7 +62,8 @@ class MyUtility:
 		internally in order to carry on other automation operations that requires login beforehand.
 
 		Returns: 
-		- driver: logged in selenium.webdriver object. 
+		- driver: logged in selenium.webdriver object.
+		1 on failure to complete case execution.		 
 
 		"""
 		try:
@@ -85,6 +88,15 @@ class MyUtility:
 	def signup(self, name, email, password):
 
 		"""This method automates student registration process.
+
+		Parameters:
+		- name: student name string.
+		- email: student email string.
+		- password: student password string.
+
+		Returns:
+		0 on success
+		1 on failure to complete case execution.		
 		
 		"""
 		try:
@@ -250,6 +262,14 @@ class MyUtility:
 	def open_course_page(self, driver):
 		"""This method redirects the webdriver to a course page identified by its course code
 		fetched from 'course_code.txt' file.
+
+		Paramaters:
+		driver: a selenium webdriver object.
+
+		Returns:
+		0 on success
+		1 on failure to complete case execution.
+
 		"""
 		try:
 			wait = WebDriverWait(driver, 10)

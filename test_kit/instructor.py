@@ -43,7 +43,9 @@ class Instructor(Actor):
 			0 indicates that this lab report submission portal is intended for individuals
 			1 indicates that this lab report submission portal is intended for groups
 
-		Returns: selenium.webdriver object. 
+		Returns:
+		- 0 on success.
+		- 1 on failure to complete case execution.
 
 		"""
 
@@ -99,7 +101,9 @@ class Instructor(Actor):
 			0 indicates that this course does not require approval to join
 			1 indicates that this course require approval to join
 
-		Returns: selenium.webdriver object. 			
+		Returns:
+		- 0 on success.
+		- 1 on failure to complete case execution.					
 
 		"""
 		try:
@@ -146,7 +150,11 @@ class Instructor(Actor):
 
 	def mark_submission(self):
 		
-		"""TODO: implement this method.
+		"""This method automates an instructor marking a lab submission.
+
+		Returns:
+		- 0 on success.
+		- 1 on failure to complete case execution.		
 		"""
 		try:
 			#Login
@@ -188,6 +196,10 @@ class Instructor(Actor):
 	def manage_deadline(self):
 
 		"""This method automates instructor extending lab report submission portal deadline.
+
+		Returns:
+		- 0 on success.
+		- 1 on failure to complete case execution.
 
 		"""
 		try:

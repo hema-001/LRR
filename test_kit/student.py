@@ -38,7 +38,7 @@ class Student(Actor):
 
 		Returns:
 		- driver: selenium.webdriver object, or
-		- false: in case failed to join a course.
+		- 1 on failure to complete case execution.
 
 		"""
 		try:
@@ -74,6 +74,10 @@ class Student(Actor):
 	def submit_assignment(self):
 
 		""" This method automates student assignment submission process.
+
+		Returns:
+		- 0 on success.
+		- 1 on failure to complete case execution.
 
 		"""
 		try:
@@ -114,6 +118,10 @@ class Student(Actor):
 
 		""" This method automates student creating course group.
 
+		Returns:
+		- 0 on success.
+		- 1 on failure to complete case execution.		
+
 		"""
 
 		try:
@@ -149,6 +157,10 @@ class Student(Actor):
 	def create_course_group(self):
 		
 		""" This method automates student requesting lab report remarking request.
+
+		Returns:
+		- 0 on success.
+		- 1 on failure to complete case execution.
 
 		"""
 		try:
