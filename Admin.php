@@ -73,7 +73,7 @@ if ($_SESSION['user_type'] != "Lecturer") {
     <div id="home" class="container tab-pane active"><br>
  
         <b>Create Lecturer/TA Accounts </b>
-     <form method="post" action="Script.php">
+     <form method="post" action="Script.php" id="frm_create_acc">
                    <input type="hidden" name="frm_createlecturrer" value="true" required=""/>
  Full_Name
 <input type="text" name="fullname" placeholder="Full Name" class="form-control" required="">
@@ -111,7 +111,7 @@ if(isset($_SESSION['info_Admin_Users'])) {
       
       <div id="menu1" class="container tab-pane fade"><br>
    
-<table class="table-bordered" style="font-size: 10pt;">
+<table class="table-bordered" id="acc_table" style="font-size: 10pt;">
     <tr style="font-size:10pt;">
         <th>ID</th>
         <th>Name</th>
@@ -121,18 +121,19 @@ if(isset($_SESSION['info_Admin_Users'])) {
         <th>Block/Activate </th>
     </tr>
 <?php
-
+     $count = 0;
      $result = mysqli_query($con,
         "SELECT * FROM Users_Table  WHERE UserType in ('Lecturer','TA')");
   while($row = mysqli_fetch_assoc($result)) {
+      $count = $count + 1;
       $pass=$row['Passport_Number'];
      $btn="<button class='btn-primary' onclick=\"updatePass(".$row['User_ID'].",'$pass')\">Reset</button>";
      if($row['Status']=="Active")
      { $newstatus="Blocked";
-      $btnBlock="<button class='btn-danger' onclick=\"blockUser(".$row['User_ID'].",'$newstatus')\">Block</button>";
+      $btnBlock="<button class='btn-danger' id='block_acc_".$count."' onclick=\"blockUser(".$row['User_ID'].",'$newstatus')\">Block</button>";
      }else{
        $newstatus="Active";
-      $btnBlock="<button class='btn-success' onclick=\"blockUser(".$row['User_ID'].",'$newstatus')\">Activate</button>";  
+      $btnBlock="<button class='btn-success' id='activate_acc_".$count."' onclick=\"blockUser(".$row['User_ID'].",'$newstatus')\">Activate</button>";  
      }
      
       echo "<tr><td>".$row['User_ID']."</td><td>".$row['Full_Name']."</td><td>".$row['Email']."</td> <td>".$row['Passport_Number']."</td><td>$btn</td><td>$btnBlock</td></tr>";
@@ -147,9 +148,9 @@ if(isset($_SESSION['info_Admin_Users'])) {
 	
    	<div id="menu2"  class="container tab-pane fade" style="margin-top:10px" >
 		<b>Please separate student numbers with spaces.</b><br>
-		<form action="batch_insert.php" method="post">
+		<form action="batch_insert.php" method="post" id="frm_batch_acc">
 		    <p>
-			<textarea cols="80" rows="16" name="users" required=""></textarea>
+			<textarea cols="60" rows="16" name="users" required=""></textarea>
 	            </p>
 			<input type="submit" class="btn btn-primary" value="Create All"><br>
 		</form>	
